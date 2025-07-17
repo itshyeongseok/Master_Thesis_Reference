@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans KR', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1680px;
+            min-height: 720px;
+            position: relative;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+        }
+        .header {
+            background: #005b96;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .authors {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .journal {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .summary-container {
+            background: #f0f5fa;
+            padding: 12px 30px;
+            border-bottom: 1px solid #e1e5e8;
+            max-width: 100%;
+        }
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #005b96;
+        }
+        .summary {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px;
+            padding: 15px;
+            flex: 1;
+        }
+        .section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .section-title {
+            color: #005b96;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #005b96;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-y: visible;
+        }
+        .term {
+            font-weight: bold;
+            color: #005b96;
+        }
+        .bullet {
+            margin-left: 8px;
+            text-indent: -8px;
+            padding-left: 8px;
+            margin-bottom: 6px;
+        }
+        .bullet:before {
+            content: "• ";
+            color: #005b96;
+        }
+        .eng {
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="title">Discovering optimal flapping wing kinematics using active deep learning</div>
+            <div class="authors">Baptiste Corban, Michael Bauerheim, Thierry Jardin</div>
+            <div class="journal">ISAE-SUPAERO, Université de Toulouse, France | J. Fluid Mech. (2023), vol. 974, A54</div>
+        </div>
+
+        <div class="summary-container">
+            <div class="summary-title">논문 요약</div>
+            <div class="summary">
+                이 연구는 능동 딥러닝(active deep learning)을 활용하여 최적의 날개 퍼덕임 운동학(flapping wing kinematics)을 발견하는 것을 목표로 합니다. 
+                심층 신경망(deep neural networks)으로 구성된 대리 모델(surrogate model)을 훈련하여 3차원 날개의 비정상 공력(unsteady aerodynamics)을 예측하고, 
+                다목적 최적화(multi-objective optimization)를 통해 파레토 프론트(Pareto front)를 구성합니다. 
+                능동 학습을 통해 최적화 비용을 83% 절감하며, 고효율 운동학과 고양력 운동학이라는 두 가지 서로 다른 운동 패밀리를 발견했습니다.
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <div class="section-title">Introduction: 연구 동기</div>
+                <div class="section-content">
+                    <div class="bullet">날개 퍼덕임 운동은 동물학자들과 항공우주 엔지니어들 모두에게 지난 30-40년간 큰 관심을 받아왔으며, 전자는 자연 종의 진화를 이해하고, 후자는 자연에서 영감을 받아 <span class="term">플래핑 윙 로봇(flapping wing robots)</span>을 개발하고자 합니다</div>
+                    <div class="bullet">잠자리와 벌새 같은 종들의 놀라운 비행 성능에 대한 물리적 메커니즘을 상세히 이해하는 것이 필수적이며, 이를 위해 광범위한 실험적 및 수치적 연구가 수행되었습니다</div>
+                    <div class="bullet"><span class="term">전연와류(Leading Edge Vortex, LEV)</span>, <span class="term">후류 포착(wake capture)</span>, <span class="term">회전 및 부가 질량 효과(rotational and added-mass effects)</span> 등이 가장 널리 알려진 공력 메커니즘으로 확인되었습니다</div>
+                    <div class="bullet">날개 퍼덕임의 공력학은 이러한 핵심 메커니즘들 간의 복잡한 상호작용으로 특징지어지며, 이는 매우 비정상적이고 비선형적인 물리학을 생성합니다</div>
+                    <div class="bullet">순수한 물리학 기반 저차원 모델은 특정 상황에서 실패할 수 있으며, 특히 <span class="term">후류 포착 효과(wake capture effects)</span>가 중요할 때 부정확해질 수 있습니다</div>
+                    <div class="bullet">최근 모델들은 고정밀 수치 시뮬레이션 데이터에 반경험적 물리학 기반 모델을 맞추는 <span class="term">데이터 주도 접근법(data-driven approaches)</span>에 의존하고 있습니다</div>
+                    <div class="bullet">기계 학습 연구의 광범위한 발전으로 인해 <span class="term">신경망(neural networks)</span>이 유체 역학 커뮤니티의 주목을 받고 있으며, 낮은 비용으로 높은 정확도의 예측을 제공할 수 있습니다</div>
+                    <div class="bullet">순수 데이터 주도 모델들은 특히 시계열 예측에서 언어 처리 애플리케이션을 위해 개발된 <span class="term">장단기 메모리(LSTM) 네트워크</span>와 같은 특수 네트워크를 활용했습니다</div>
+                    <div class="bullet">물리학 양의 예측에는 보통 짧은 시간 이력만 필요하기 때문에, <span class="term">다층 퍼셉트론(MLPs)</span>과 <span class="term">합성곱 신경망(CNNs)</span>이 비정상 예측에 적응되어 사용되고 있습니다</div>
+                    <div class="bullet">능동 학습 접근법을 통해 추정된 최적해를 기반으로 새로운 데이터를 샘플링하여 훈련 데이터셋을 반복적으로 구축함으로써 신경망의 일반화 문제를 해결할 수 있습니다</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Related Works: 관련 연구</div>
+                <div class="section-content">
+                    <div class="bullet">Ellington (1984), Dickinson & Götz (1993) 등의 실험 연구들이 날개 퍼덕임의 주요 공력 메커니즘을 식별하는 데 크게 기여했습니다</div>
+                    <div class="bullet">Sun & Tang (2002), Wang et al. (2004) 등의 수치 연구들이 <span class="term">전연와류(LEV)</span>, <span class="term">후류 포착(wake capture)</span>, <span class="term">회전 및 부가 질량 효과</span> 등의 현상을 밝혀냈습니다</div>
+                    <div class="bullet">Nakata, Liu & Bomphrey (2015), Cai et al. (2021) 등은 고정밀 수치 시뮬레이션 데이터에 반경험적 물리학 기반 모델을 맞추는 데이터 주도 접근법을 사용했습니다</div>
+                    <div class="bullet">Hochreiter & Schmidhuber (1997)가 도입한 <span class="term">LSTM 네트워크</span>는 시계열 예측에서 널리 사용되었으며, 음향파 전파 및 구체 주변의 비정상 힘과 후류 예측에 적용되었습니다</div>
+                    <div class="bullet">Alguacil et al. (2021, 2022)은 <span class="term">CNN을 이용한 이동 연산자(shift operator)</span>를 사용하여 시공간에서 음향파를 전파시키는 기법을 개발했습니다</div>
+                    <div class="bullet">Tompson et al. (2017)이 도입한 <span class="term">장기 손실(Long-Term Losses, LTL)</span>은 짧은 입력 이력을 가진 이동 연산자의 학습을 개선하는 데 사용되었습니다</div>
+                    <div class="bullet">Krügener et al. (2022)은 10차원 공간에서 로켓 엔진의 연소실 기하학을 최적화하기 위해 Reynolds-averaged Navier-Stokes 시뮬레이션에서 MLP를 훈련했습니다</div>
+                    <div class="bullet">Roy et al. (2018), Campet et al. (2020) 등은 <span class="term">베이지안 최적화(Bayesian optimization)</span>에서 <span class="term">가우시안 프로세스(Gaussian Processes)</span>를 사용하여 고정밀 CFD 시뮬레이션과 결합된 능동 학습을 적용했습니다</div>
+                    <div class="bullet">Pandi et al. (2022)은 생물학 분야에서, Wang et al. (2022)은 재료 과학 분야에서 능동 학습을 최적화에 적용했습니다</div>
+                    <div class="bullet">Gehrke & Mulleners (2021)은 실험 측정을 입력으로 사용하여 호버링 직사각형 날개의 다목적 최적화를 수행했으며, 피치 운동을 정의하는 매개변수를 변수로 사용했습니다</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Method: 새로운 접근 방법</div>
+                <div class="section-content">
+                    <div class="bullet">3차원 날개의 비정상 공력을 예측하기 위해 <span class="term">심층 신경망(deep neural networks)</span> 기반의 대리 모델을 구축합니다</div>
+                    <div class="bullet"><span class="term">직접 수치 시뮬레이션(DNS)</span>을 사용하여 무작위로 생성된 운동학 데이터셋으로 모델을 훈련합니다</div>
+                    <div class="bullet">운동학에 대한 희소 정보를 사용하여 날개가 경험하는 비정상 <span class="term">양력(lift)</span>과 <span class="term">토크(torques)</span>를 빠르게 예측할 수 있습니다</div>
+                    <div class="bullet">이 빠른 대리 모델을 사용하여 <span class="term">다목적 최적화(multi-objective optimization)</span>를 수행합니다</div>
+                    <div class="bullet">결과로 생성된 <span class="term">파레토 프론트(Pareto front)</span>는 초기 데이터셋의 운동학과 매우 다를 수 있는 새로운 운동학으로 구성됩니다</div>
+                    <div class="bullet">파레토 프론트에서 임의로 선택된 몇 개의 운동학을 DNS로 시뮬레이션하고 이를 데이터베이스 개선에 사용합니다</div>
+                    <div class="bullet">새로운 데이터셋을 사용하여 네트워크를 재훈련하며, 이러한 <span class="term">능동 딥러닝/최적화 프레임워크</span>를 수렴할 때까지 수행합니다</div>
+                    <div class="bullet">단 2번의 반복 후 수렴을 달성하여 전체적으로 최적화 비용을 83% 절감했습니다</div>
+                    <div class="bullet">운동학 매개변수화를 위해 <span class="term">푸리에 계수(Fourier coefficients)</span>를 사용하며, 피치 각도 ψ(t)와 스트로크 각도 φ(t)를 정의합니다</div>
+                    <div class="bullet"><span class="term">NSGA II 알고리즘</span>을 사용하여 다목적 최적화를 수행하며, 양력 계수 CL과 효율 η를 목표로 합니다</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Experiment: 실험 방법과 결과</div>
+                <div class="section-content">
+                    <div class="bullet">NACA0012 프로필을 가진 직사각형 날개 모델을 사용하며, 코드 길이 c = 0.01m, 날개 스팬 b = 0.04m로 설정했습니다</div>
+                    <div class="bullet">모든 경우에서 <span class="term">레이놀즈 수(Reynolds number)</span>를 1000으로 고정하고, 호버링 체제에서 운동을 연구했습니다</div>
+                    <div class="bullet">초기 데이터셋은 294개의 운동으로 구성되며, 이 중 144개는 순수한 정현파 피치 프로필을, 150개는 3개의 푸리에 계수를 사용하여 생성했습니다</div>
+                    <div class="bullet">StarCCM+를 사용하여 DNS를 수행하며, 3차원 Navier-Stokes 방정식을 직접 해결합니다</div>
+                    <div class="bullet">계산 도메인은 원통형(40c 높이, 30c 너비)이며, 날개는 2c 너비의 이동 중첩 메쉬(moving overset mesh) 내에 포함됩니다</div>
+                    <div class="bullet">공간 해상도는 날개 표면에서 Δx = 0.02c, 제어 볼륨에서 Δx = 0.04c로 설정하여 총 190만 개의 셀을 사용합니다</div>
+                    <div class="bullet">시간 해상도는 주기당 250 시간 단계로 설정하며, 4주기를 시뮬레이션하고 과도 효과를 피하기 위해 최근 2주기만 사용합니다</div>
+                    <div class="bullet">신경망은 <span class="term">피드포워드 신경망(FNNs)</span>으로 구성되며, 각각 512, 1024, 512개의 뉴런을 가진 3개의 은닉층을 사용합니다</div>
+                    <div class="bullet">입력 벡터로는 X = [ψ, ψ̇, ψ̈, φ̇]의 상태 벡터를 사용하며, m = 3, τ = 9로 설정하여 시간 지연을 적용합니다</div>
+                    <div class="bullet">혁명 토크의 평균 R² 점수는 0.985, 양력은 0.983, 회전 토크는 0.948로 우수한 예측 성능을 보여줍니다</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Discussion: 결과의 해석</div>
+                <div class="section-content">
+                    <div class="bullet">파레토 프론트 분석 결과 두 개의 뚜렷한 운동 체제가 확인되었습니다: <span class="term">고효율 운동학(high-efficiency kinematics)</span>과 <span class="term">고양력 운동학(high-lift kinematics)</span></div>
+                    <div class="bullet">고효율 운동학은 큰 스트로크 진폭(90-120°)과 상대적으로 낮은 받음각(37°)을 특징으로 하며, 과일파리, 꿀벌, 매우 유사한 특성을 보입니다</div>
+                    <div class="bullet">고효율 운동에서 양력 생성은 주로 <span class="term">준정상 효과(quasi-steady effects)</span>와 안정한 <span class="term">전연와류(LEV)</span> 형성에 의해 주도됩니다</div>
+                    <div class="bullet">고양력 운동학은 작은 스트로크 진폭(20°)과 높은 받음각(81°)을 특징으로 하며, 모기의 운동학과 유사합니다</div>
+                    <div class="bullet">고양력 운동에서 양력 생성은 <span class="term">후연에서의 빠른 와도 생성(rapid generation of vorticity at the trailing edge)</span>에 의해 주도됩니다</div>
+                    <div class="bullet">고효율 체제에서는 효율이 빠르게 감소하는 기울기(Δη/ΔCL = -2.12)를 보이며, 이는 양력 계수를 얻기 위해 효율의 약 2배 비용이 든다는 의미입니다</div>
+                    <div class="bullet">고양력 체제에서는 효율 감소가 더 완만하며(Δη/ΔCL = -0.74), 양력 계수 증가가 효율 측면에서 그리 비싸지 않습니다</div>
+                    <div class="bullet">위상 이동(phase shift) 분석 결과, 고효율 운동은 90-110°의 위상 이동을 보이며 이는 <span class="term">전진 회전(advanced rotation)</span>으로 알려진 특성입니다</div>
+                    <div class="bullet">고양력 운동은 150-170°의 큰 위상 이동을 보이며, 이는 스트로크의 상당 부분 동안 날개의 후연이 전연보다 앞에 있다는 의미입니다</div>
+                    <div class="bullet"><span class="term">후류 포착 효과(wake capture effects)</span>는 고효율 경우에는 양력 생성에 해로운 영향을 미치지만, 고양력 경우에는 유익한 영향을 미치는 것으로 나타났습니다</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Conclusion: 최종 요약</div>
+                <div class="section-content">
+                    <div class="bullet">딥러닝 기반 능동 학습 접근법을 사용하여 최적의 호버링 날개 퍼덕임 운동학을 성공적으로 발견했습니다</div>
+                    <div class="bullet">다목적 최적화를 통해 양력 대 효율 공간에서 정확한 파레토 프론트를 구성했으며, 이는 초기 데이터셋과 거리가 먼 최적해를 포함합니다</div>
+                    <div class="bullet">능동 학습 전략을 통해 최적화 비용을 전체 CFD 대비 17%로 대폭 절감했습니다(83% 비용 절감)</div>
+                    <div class="bullet">최고 양력은 52% 개선되었고, 최고 효율은 12% 개선되었습니다</div>
+                    <div class="bullet">파레토 프론트에서 두 가지 뚜렷한 체제를 확인했습니다: 고효율 운동학과 고양력 운동학</div>
+                    <div class="bullet">가장 효율적인 운동은 생체 모방 운동학(매, 과일파리, 꿀벌)과 유사하며, 높은 스트로크 진폭(110°), 낮은 평균 받음각(37°), 약 90°의 위상 이동을 특징으로 합니다</div>
+                    <div class="bullet">가장 높은 양력을 생성하는 운동은 낮은 스트로크 진폭(20°), 빠른 피치업 운동, 큰 위상 이동을 특징으로 하며, 모기의 운동학과 유사합니다</div>
+                    <div class="bullet">고효율 운동에서는 약하게 비정상적인 흐름과 준정상 상태에 도달하는 부착된 전연와류가 형성됩니다</div>
+                    <div class="bullet">고양력 운동에서는 강한 <span class="term">부가 질량 효과(added mass effects)</span>와 강한 후연와류의 빠른 생성이 주요 메커니즘입니다</div>
+                    <div class="bullet">이 연구 방법은 최적화 문제나 대리 모델 유형에 관계없이 독립적으로 적용 가능하며, 최적점 근처에서 충분히 샘플링되지 않은 기존 데이터셋이 있는 경우 대리 모델링에 유용한 방법입니다</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
