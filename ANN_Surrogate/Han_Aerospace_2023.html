@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans KR', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1680px;
+            min-height: 720px;
+            position: relative;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+        }
+        .header {
+            background: #2c5530;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .authors {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .journal {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .review-type {
+            font-size: 13px;
+            background: rgba(255,255,255,0.2);
+            padding: 3px 8px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        .summary-container {
+            background: #f0f8f0;
+            padding: 15px 30px;
+            border-bottom: 1px solid #e1e5e8;
+            max-width: 100%;
+        }
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #2c5530;
+        }
+        .summary {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .scope-info {
+            background: #e8f5e8;
+            padding: 10px 30px;
+            border-bottom: 1px solid #d1e7d1;
+            font-size: 13px;
+            color: #2c5530;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px;
+            padding: 15px;
+            flex: 1;
+        }
+        .section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .section-title {
+            color: #2c5530;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #2c5530;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-y: visible;
+        }
+        .term {
+            font-weight: bold;
+            color: #2c5530;
+        }
+        .bullet {
+            margin-left: 8px;
+            text-indent: -8px;
+            padding-left: 8px;
+            margin-bottom: 8px;
+        }
+        .bullet:before {
+            content: "• ";
+            color: #2c5530;
+            font-weight: bold;
+        }
+        .eng {
+            color: #666;
+            font-style: italic;
+        }
+        .citation {
+            color: #666;
+            font-size: 11px;
+            font-style: italic;
+            margin-left: 5px;
+        }
+        .trend-item {
+            background: #f8fdf8;
+            border-left: 3px solid #2c5530;
+            padding: 6px 10px;
+            margin: 5px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .gap-highlight {
+            background: #fff3cd;
+            border-left: 3px solid #ffc107;
+            padding: 6px 10px;
+            margin: 5px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .future-direction {
+            background: #e7f3ff;
+            border-left: 3px solid #007bff;
+            padding: 6px 10px;
+            margin: 5px 0;
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="title">A Review of Flapping Mechanisms for Avian-Inspired Flapping-Wing Air Vehicles</div>
+            <div class="authors">Jae-Hung Han, Yu-Jeong Han, Hyeon-Ho Yang, Sang-Gil Lee, Eun-Hyuck Lee</div>
+            <div class="journal">Aerospace 2023, 10, 554 | KAIST, Department of Aerospace Engineering</div>
+            <div class="review-type">리뷰 유형: Narrative Review</div>
+        </div>
+
+        <div class="summary-container">
+            <div class="summary-title">논문 요약</div>
+            <div class="summary">
+                본 리뷰는 최근 개발된 조류 영감 플래핑윙 항공기(FWAV)의 플래핑 메커니즘에 초점을 맞춘 포괄적인 분석 연구입니다. 플래핑 메커니즘은 날개 운동과 직접적으로 연관되어 FWAV의 공기역학적 성능을 결정하는 핵심 요소로, 조류와 박쥐의 비행 특성을 모방하여 기동성, 은밀성, 그리고 낮은 레이놀즈 수 영역에서의 우수한 비행 효율을 제공합니다. 본 연구는 날개 운동 및 공기역학적 성능 개선 전략에 따른 플래핑 메커니즘의 분류와 분석을 수행하였으며, 현재 연구 공백을 파악하고 향후 연구 방향을 제시합니다.
+            </div>
+        </div>
+
+        <div class="scope-info">
+            <strong>리뷰 범위:</strong> 1984-2023년 플래핑윙 항공기 연구, 84개 주요 메커니즘 분석, 조류 영감 FWAV(날개 길이 200mm 이상, 플래핑 주파수 30Hz 이하), IEEE, AIAA, Nature 등 주요 데이터베이스 검색
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <div class="section-title">Background: 연구 배경 및 필요성</div>
+                <div class="section-content">
+                    <div class="bullet">기존 무인항공기의 <span class="term">기동성 한계</span> <span class="eng">(Maneuverability Limitations)</span>를 극복하기 위한 생체모방 연구 필요성</div>
+                    <div class="bullet"><span class="term">낮은 레이놀즈 수 영역</span> <span class="eng">(Low Reynolds Number Regime)</span>에서 기존 항공기의 성능 저하 문제</div>
+                    <div class="bullet">조류와 박쥐의 <span class="term">다관절 날개</span> <span class="eng">(Multi-articulated Wings)</span>가 제공하는 능동적 날개 변형의 우수성</div>
+                    <div class="bullet">플래핑윙 항공기의 <span class="term">저소음 특성</span> <span class="eng">(Low Noise Characteristics)</span>과 군사적 은밀성 요구</div>
+                    <div class="bullet">기존 <span class="term">고정익 및 회전익</span> <span class="eng">(Fixed-wing and Rotorcraft)</span> 시스템 대비 복잡한 환경에서의 적응성 부족</div>
+                    <div class="bullet"><span class="term">플래핑 메커니즘</span> <span class="eng">(Flapping Mechanism)</span>이 항공기 성능에 미치는 직접적 영향 분석 필요</div>
+                    <div class="bullet">현재까지 대부분의 FWAV가 <span class="term">곤충 영감</span> <span class="eng">(Insect-inspired)</span>에 치우쳐 있어 조류 영감 연구의 체계적 정리 필요</div>
+                    <div class="bullet">FWAV 개발 초기 단계에서 <span class="term">메커니즘 설계 가이드</span> <span class="eng">(Mechanism Design Guide)</span>의 부재</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Methodology: 리뷰 방법론</div>
+                <div class="section-content">
+                    <div class="bullet"><span class="term">체계적 문헌 검색</span> <span class="eng">(Systematic Literature Search)</span>: IEEE Xplore, ScienceDirect, PubMed, Google Scholar 등 주요 데이터베이스 활용</div>
+                    <div class="bullet"><span class="term">키워드 기반 검색</span> <span class="eng">(Keyword-based Search)</span>: "flapping-wing", "avian-inspired", "FWAV", "bio-mimetic aircraft" 등 핵심 용어</div>
+                    <div class="bullet"><span class="term">시간적 범위</span> <span class="eng">(Temporal Scope)</span>: 1984년부터 2023년까지 약 40년간의 연구 문헌 분석</div>
+                    <div class="bullet"><span class="term">분류 체계</span> <span class="eng">(Classification System)</span>: 날개 운동 축수(단축/다축)와 메커니즘 유형(강체/유연체)에 따른 분류</div>
+                    <div class="bullet"><span class="term">성능 지표 분석</span> <span class="eng">(Performance Metrics Analysis)</span>: 추력, 양력/항력비, 비행효율 개선 전략별 분류</div>
+                    <div class="bullet"><span class="term">정성적 평가</span> <span class="eng">(Qualitative Assessment)</span>: 각 메커니즘의 장단점 및 적용 가능성 평가</div>
+                    <div class="bullet"><span class="term">연구 공백 식별</span> <span class="eng">(Research Gap Identification)</span>: 기존 연구의 한계점 및 미해결 문제 도출</div>
+                    <div class="bullet"><span class="term">참고문헌 분석</span> <span class="eng">(Reference Analysis)</span>: 102개 주요 참고문헌의 인용 패턴 및 연구 동향 분석</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Current Trends: 현재 연구 동향</div>
+                <div class="section-content">
+                    <div class="trend-item"><span class="term">곤충 영감에서 조류 영감으로의 전환</span> <span class="eng">(Shift from Insect to Avian Inspiration)</span>: 안정성과 페이로드 용량 증대 요구</div>
+                    <div class="trend-item"><span class="term">4절 링크 메커니즘의 지배적 사용</span> <span class="eng">(Dominant Use of Four-bar Linkage)</span>: 간단한 구조와 높은 에너지 효율성</div>
+                    <div class="trend-item"><span class="term">다축 메커니즘 개발 증가</span> <span class="eng">(Increasing Multi-axis Mechanisms)</span>: 날개 접기, 비틀림, 손목 굽힘 구현</div>
+                    <div class="trend-item"><span class="term">유연 메커니즘 적용 확대</span> <span class="eng">(Expanding Compliant Mechanisms)</span>: 마찰 감소 및 경량화를 위한 스프링 및 유연 관절 사용</div>
+                    <div class="trend-item"><span class="term">공기역학적 최적화 통합</span> <span class="eng">(Integrated Aerodynamic Optimization)</span>: 메커니즘 설계와 CFD 해석의 결합</div>
+                    <div class="trend-item"><span class="term">생체모방 정밀도 향상</span> <span class="eng">(Enhanced Biomimetic Accuracy)</span>: Festo SmartBird 등 실제 조류 운동 정확 모사</div>
+                    <div class="trend-item"><span class="term">3D 프린팅 기술 활용</span> <span class="eng">(3D Printing Technology Utilization)</span>: 복잡한 메커니즘의 일체형 제작</div>
+                    <div class="trend-item"><span class="term">다학제적 설계 접근법</span> <span class="eng">(Multidisciplinary Design Approach)</span>: 구조, 공기역학, 제어의 통합 설계</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Key Findings: 주요 발견사항</div>
+                <div class="section-content">
+                    <div class="bullet"><span class="term">메커니즘 분류의 명확한 구분</span> <span class="eng">(Clear Mechanism Classification)</span>: 단축(강체/유연) vs 다축(날개접기/비틀림/손목굽힘) 메커니즘</div>
+                    <div class="bullet"><span class="term">4절 링크의 우수성</span> <span class="eng">(Four-bar Linkage Superiority)</span>: DC 모터와의 호환성, 낮은 전압 구동, 높은 토크 효율</div>
+                    <div class="bullet"><span class="term">다축 메커니즘의 성능 향상</span> <span class="eng">(Multi-axis Performance Enhancement)</span>: 단축 대비 64.3% 추력 증가, 89% 양력 증가 사례</div>
+                    <div class="bullet"><span class="term">날개 접기 효과</span> <span class="eng">(Wing Folding Effects)</span>: 상승 시 관성 비용 감소, 항력 저감을 통한 에너지 효율 개선</div>
+                    <div class="bullet"><span class="term">비틀림 운동의 중요성</span> <span class="eng">(Significance of Twisting Motion)</span>: 날개끝 실속 방지, 비행속도 제어, 추력 증가</div>
+                    <div class="bullet"><span class="term">유연 메커니즘의 한계</span> <span class="eng">(Compliant Mechanism Limitations)</span>: 전달 효율 저하로 대형 FWAV에 부적합</div>
+                    <div class="bullet"><span class="term">공진 활용의 효과</span> <span class="eng">(Resonance Utilization Effects)</span>: 스프링 적용 시 30% 에너지 소비 감소</div>
+                    <div class="bullet"><span class="term">설계 최적화 부족</span> <span class="eng">(Lack of Design Optimization)</span>: 대부분 시행착오나 임의 매개변수 사용</span></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Research Gaps: 연구 공백 및 한계</div>
+                <div class="section-content">
+                    <div class="gap-highlight"><span class="term">공기역학-구조 통합 해석 부족</span> <span class="eng">(Lack of FSI Analysis)</span>: 유체-구조 상호작용 해석의 미흡</div>
+                    <div class="gap-highlight"><span class="term">다학제적 최적설계 미비</span> <span class="eng">(Insufficient MDO)</span>: 공기역학, 구조, 진동 통합 최적화 부재</div>
+                    <div class="gap-highlight"><span class="term">비행 전략 모사 한계</span> <span class="eng">(Limited Flight Strategy Mimicry)</span>: 활공-플래핑, 경계-플래핑 등 전략 적용 부족</div>
+                    <div class="gap-highlight"><span class="term">이착륙 메커니즘 부재</span> <span class="eng">(Absence of Take-off/Landing Mechanisms)</span>: 대부분 FWAV에서 이착륙 기능 미구현</div>
+                    <div class="gap-highlight"><span class="term">액추에이터 기술 한계</span> <span class="eng">(Actuator Technology Limitations)</span>: 압전 모터 등 경량 액추에이터의 토크/효율 문제</div>
+                    <div class="gap-highlight"><span class="term">제작 기술 제약</span> <span class="eng">(Manufacturing Constraints)</span>: 복잡한 메커니즘 구현을 위한 정밀 제작 기술 부족</div>
+                    <div class="gap-highlight"><span class="term">실시간 형상 변화 제어</span> <span class="eng">(Real-time Morphing Control)</span>: 비행 중 날개 형상 적응 제어 기술 미성숙</div>
+                    <div class="gap-highlight"><span class="term">내구성 및 피로 분석</span> <span class="eng">(Durability and Fatigue Analysis)</span>: 반복적 플래핑에 대한 구조적 건전성 검증 부족</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Future Directions: 향후 연구 방향</div>
+                <div class="section-content">
+                    <div class="future-direction"><span class="term">공기역학 기반 메커니즘 설계</span> <span class="eng">(Aerodynamic-based Mechanism Design)</span>: 신뢰성 있는 비정상 공기역학 모델과 메커니즘 설계 통합</div>
+                    <div class="future-direction"><span class="term">유체-구조 상호작용 최적화</span> <span class="eng">(FSI Optimization)</span>: 공기역학력과 구조 변형의 동시 고려 설계</div>
+                    <div class="future-direction"><span class="term">고급 액추에이터 개발</span> <span class="eng">(Advanced Actuator Development)</span>: 형상기억합금, 압전 세라믹 등 스마트 재료 활용</div>
+                    <div class="future-direction"><span class="term">3D 프린팅 기술 활용</span> <span class="eng">(3D Printing Technology)</span>: 일체형 복잡 메커니즘 제작 및 경량화</span></div>
+                    <div class="future-direction"><span class="term">지능형 제어 시스템</span> <span class="eng">(Intelligent Control Systems)</span>: AI 기반 적응적 플래핑 제어 및 형상 변화</div>
+                    <div class="future-direction"><span class="term">생체모방 정밀도 향상</span> <span class="eng">(Enhanced Biomimetic Fidelity)</span>: 실제 조류의 복잡한 날개 운동 완전 모사</div>
+                    <div class="future-direction"><span class="term">다목적 임무 최적화</span> <span class="eng">(Multi-mission Optimization)</span>: 정찰, 감시, 운송 등 다양한 임무별 최적 설계</div>
+                    <div class="future-direction"><span class="term">지속가능성 고려</span> <span class="eng">(Sustainability Considerations)</span>: 친환경 재료 및 에너지 효율 극대화 기술</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
