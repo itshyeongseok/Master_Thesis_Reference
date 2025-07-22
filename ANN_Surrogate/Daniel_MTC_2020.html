@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans KR', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1680px;
+            min-height: 720px;
+            position: relative;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+        }
+        .header {
+            background: #005b96;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .authors {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .journal {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .summary-container {
+            background: #f0f5fa;
+            padding: 12px 30px;
+            border-bottom: 1px solid #e1e5e8;
+            max-width: 100%;
+        }
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #005b96;
+        }
+        .summary {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px;
+            padding: 15px;
+            flex: 1;
+        }
+        .section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .section-title {
+            color: #005b96;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #005b96;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-y: visible;
+        }
+        .term {
+            font-weight: bold;
+            color: #005b96;
+        }
+        .bullet {
+            margin-left: 8px;
+            text-indent: -8px;
+            padding-left: 8px;
+            margin-bottom: 6px;
+        }
+        .bullet:before {
+            content: "• ";
+            color: #005b96;
+        }
+        .eng {
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="title">Mechanical response of low density expanded polypropylene foams in compression and tension at different loading rates and temperatures</div>
+            <div class="authors">Daniel T. Morton, Aase Reyes, Arild H. Clausen, Odd Sture Hopperstad</div>
+            <div class="journal">Materials Today Communications 23 (2020) 100917</div>
+        </div>
+
+        <div class="summary-container">
+            <div class="summary-title">논문 요약</div>
+            <div class="summary">
+                이 연구는 저밀도 팽창 폴리프로필렌 폼(EPP)의 기계적 특성에 대한 변형률 속도와 온도의 영향을 조사한 실험적 연구입니다. 유사한 밀도(30 kg/m³)를 가지지만 서로 다른 형태학적 특성을 보이는 두 가지 EPP 폼을 압축과 인장 조건에서 테스트하였습니다. 변형률 속도(10⁻³ ~ 10⁰ s⁻¹)와 온도(-30°C ~ 60°C)가 기계적 특성에 미치는 영향을 정량화하여, 폼의 미세구조와 환경 조건이 에너지 흡수 능력에 중요한 영향을 미침을 확인하였습니다. 연구 결과는 자동차 산업에서 보행자 충격 보호 및 포장재 응용분야에서 EPP 폼 구성요소의 설계 최적화에 활용될 수 있습니다.
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <div class="section-title">Introduction: 연구 동기</div>
+                <div class="section-content">
+                    <div class="bullet"><span class="term">에너지 흡수</span> <span class="eng">(Energy absorption)</span>와 충격 완화 <span class="eng">(impact mitigation)</span>는 폴리머 폼이 활용되는 대표적인 응용 분야로, 포장재, 헬멧, 보행자 충격 보호 등에 광범위하게 사용됩니다.</div>
+                    <div class="bullet">폴리머 폼은 적절한 <span class="term">벌크 재료</span> <span class="eng">(bulk material)</span>와 제조 공정을 선택하여 특정 응용 분야에 맞게 맞춤화될 수 있으며, 저밀도와 우수한 에너지 흡수 능력이 바람직한 특성입니다.</div>
+                    <div class="bullet"><span class="term">상대 밀도</span> <span class="eng">(relative density)</span>가 0.3 이하인 재료를 폼으로 정의하며, 미세구조 내에서 벌크 재료의 분포에 따라 개방형 셀 <span class="eng">(open cell)</span> 또는 폐쇄형 셀 <span class="eng">(closed cell)</span>로 분류됩니다.</div>
+                    <div class="bullet">벌크 재료에 따라 강성 폼에서는 소성 항복 <span class="eng">(plastic yielding)</span> 또는 파괴가 변형을 지배하며, 유연성 폼에서는 탄성 굽힘 <span class="eng">(elastic bending)</span>이 변형을 지배합니다.</div>
+                    <div class="bullet">폴리머는 일반적으로 <span class="term">속도 의존적</span> <span class="eng">(rate dependent)</span>이며, 확장하면 폼도 속도 의존적 특성을 보입니다. 자동차 산업에서는 다양한 충격 속도가 예상되는 보행자 충격 솔루션 개발에 폼을 광범위하게 사용합니다.</div>
+                    <div class="bullet">반결정성 폴리머인 <span class="term">폴리프로필렌</span> <span class="eng">(polypropylene, PP)</span>은 유리 전이 온도에서 용융 온도까지 영률의 현저한 단계적 감소를 보이는 등 온도 변화에 민감합니다.</div>
+                    <div class="bullet"><span class="term">EPP 폼</span> <span class="eng">(Expanded Polypropylene foam)</span>은 현재 자동차와 같은 보호 응용 분야에 사용되는 폐쇄형 셀 폼 재료의 예로, 주요 하중 모드는 일반적으로 압축이지만 굽힘 시 인장과 전단도 발생합니다.</div>
+                    <div class="bullet">정확한 재료 설명은 정밀한 유한요소 해석과 같은 수치 도구를 엔지니어링에 활용하는 중요한 부분으로, <span class="term">디지털 이미지 상관관계</span> <span class="eng">(Digital Image Correlation, DIC)</span>를 통한 재료 데이터 획득에 주의를 기울여야 합니다.</div>
+                    <div class="bullet">본 연구의 목표는 유사한 밀도를 가진 두 EPP 폼 간의 기계적 특성 차이를 강조하고, 기계적 반응을 정의하는 주요 특성의 변형률 속도 및 온도 의존성을 정량화하는 것입니다.</div>
+                    <div class="bullet">실험 결과는 유사한 위상학적 구조를 가진 폼의 미세구조 영향을 강조하여 엔지니어가 구성 요소의 기계적 반응을 맞춤화하는 데 도움이 되며, 환경 조건의 중요성을 강조합니다.</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Related Works: 관련 연구</div>
+                <div class="section-content">
+                    <div class="bullet">Mills (2007)의 <span class="term">폴리머 폼 핸드북</span> <span class="eng">(Polymer foams handbook)</span>에서는 엔지니어링 및 생체역학 응용 분야와 설계 가이드에 대한 포괄적인 정보를 제공합니다 [1].</div>
+                    <div class="bullet">Schuster (2006)은 보행자 충격을 위한 범퍼 설계의 현재 동향을 분석하여 폼 재료의 자동차 안전 응용 분야에서의 중요성을 강조하였습니다 [2].</div>
+                    <div class="bullet">Gibson과 Ashby (1997)의 <span class="term">셀룰러 고체</span> <span class="eng">(Cellular solids)</span> 연구는 구조와 특성에 대한 기초 이론을 제공하며, 폼 재료의 기계적 거동 이해에 핵심적인 참고 문헌입니다 [3].</div>
+                    <div class="bullet">Linul과 Marsavina (2017)는 강성 폴리우레탄 폼의 <span class="term">혼합 모드 파괴 인성</span> <span class="eng">(mixed-mode fracture toughness)</span>에 대한 실험적 연구를 수행하였습니다 [4].</div>
+                    <div class="bullet">Siviour와 Jordan (2016)은 폴리머의 <span class="term">고속 변형률 역학</span> <span class="eng">(high strain rate mechanics)</span>에 대한 종합적인 리뷰를 제공하여 폼 재료의 속도 의존성 이해에 기여하였습니다 [11].</div>
+                    <div class="bullet">Zhang 등 (1998)은 동적 충돌 하중을 받는 폴리머 폼 재료의 <span class="term">구성 모델링</span> <span class="eng">(constitutive modeling)</span>에 대한 연구를 수행하였습니다 [12].</div>
+                    <div class="bullet">Bouix 등 (2009)은 폴리프로필렌 폼의 동적 하중 하에서의 거동을 연구하여 변형률 속도, 밀도, 미세구조 효과를 분석하였습니다 [15].</div>
+                    <div class="bullet">Cronin과 Ouellet (2016)은 저밀도 폴리에틸렌, 팽창 폴리스티렌, 팽창 폴리프로필렌의 변형률 속도와 크기 효과에 대한 기계적 특성을 연구하였습니다 [16].</div>
+                    <div class="bullet">Johnsen 등 (2016)은 저온에서 폴리머의 <span class="term">대변형률 인장 거동</span> <span class="eng">(large-strain tensile behaviour)</span> 측정을 위한 실험 장치를 개발하였습니다 [24].</div>
+                    <div class="bullet">Pierron (2010)은 전체 필드 측정을 통한 표준 및 보조 저밀도 폴리머 폼의 <span class="term">푸아송 비</span> <span class="eng">(Poisson's ratios)</span> 식별에 대한 연구를 수행하였습니다 [30].</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Method: 새로운 접근 방법</div>
+                <div class="section-content">
+                    <div class="bullet">두 개의 서로 다른 자동차 회사에서 제공된 <span class="term">EPP 폼 구성 요소</span> <span class="eng">(EPP foam components)</span> A와 B를 사용하여 다양한 조건에서 압축 및 인장 테스트를 수행하였습니다.</div>
+                    <div class="bullet"><span class="term">주사 전자 현미경</span> <span class="eng">(Scanning Electron Microscopy, SEM)</span>을 사용하여 두 폼의 내부 미세구조를 비교 분석하였습니다. 액체 질소에서 냉각 후 굽힘으로 파단시켜 손상을 최소화한 표면을 관찰하였습니다.</div>
+                    <div class="bullet">압축 테스트용으로 Foam A에서 30×30×30 mm³, Foam B에서 25×25×25 mm³ 크기의 정육면체 시편을 추출하였으며, 인장 테스트용으로는 각각 30×30×60 mm³와 30×30×50 mm³ 크기의 긴 시편을 사용하였습니다.</div>
+                    <div class="bullet"><span class="term">디지털 이미지 상관관계</span> <span class="eng">(Digital Image Correlation, DIC)</span> 기법을 사용하여 변형 중 국부 변형률 필드를 측정하고, eCorr 소프트웨어를 통해 요소 기반 분석을 수행하였습니다.</div>
+                    <div class="bullet">온도 테스트를 위해 폴리카보네이트 챔버를 사용하여 액체 질소 주입 및 열풍을 통해 -30°C에서 60°C 범위의 온도 조건을 구현하였습니다.</div>
+                    <div class="bullet">인장 시험에서는 알루미늄 큐브에 시편을 접착하고 두 개의 핀으로 테스트 머신에 부착하여 굽힘 모멘트가 발생하지 않도록 하는 특별한 <span class="term">고정 장치</span> <span class="eng">(fixture)</span>를 개발하였습니다.</div>
+                    <div class="bullet"><span class="term">전역 변형률</span> <span class="eng">(global strain)</span>과 <span class="term">DIC 변형률</span> <span class="eng">(DIC strain)</span>의 두 가지 변형률 측정 방법을 비교하여 각각의 장단점을 분석하였습니다.</div>
+                    <div class="bullet">압축에서는 횡방향 팽창이 거의 없어 공학 응력이 진응력과 거의 같지만, 인장에서는 상당한 횡방향 수축으로 인해 진응력 계산에서 <span class="term">횡방향 스트레치</span> <span class="eng">(transverse stretch)</span>를 고려하였습니다.</div>
+                    <div class="bullet"><span class="term">증분 수축비</span> <span class="eng">(incremental contraction ratio)</span> ν = -dεt/dεl을 도입하여 대변형에서의 횡방향 변형 거동을 더 자세히 설명하였습니다.</div>
+                    <div class="bullet">영률 (E), <span class="term">붕괴 응력</span> <span class="eng">(collapse stress, σc)</span>, <span class="term">경화 계수</span> <span class="eng">(hardening modulus, EH)</span>의 세 가지 주요 매개변수를 정의하여 폼의 기계적 반응을 정량화하였습니다.</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Experiment: 실험 방법과 결과</div>
+                <div class="section-content">
+                    <div class="bullet">Foam A의 평균 밀도는 28.0 kg/m³ (표준편차 0.7 kg/m³)이고, Foam B는 31.3 kg/m³ (표준편차 1.6 kg/m³)로 측정되어 유사한 밀도를 가짐을 확인하였습니다.</div>
+                    <div class="bullet">SEM 이미지 분석 결과, Foam A는 6.13 mm² 영역에서 117개의 공극(19.1 voids/mm²)을, Foam B는 7.17 mm² 영역에서 58개의 공극(8.1 voids/mm²)을 보여 Foam A가 더 미세한 셀 구조를 가짐을 확인하였습니다.</div>
+                    <div class="bullet"><span class="term">변형률 속도 의존성</span> <span class="eng">(strain rate dependence)</span> 실험에서 10⁻³에서 10⁰ s⁻¹ 범위에서 두 폼 모두 상당한 변형률 속도 민감성을 보였으며, 붕괴 응력은 Foam A에서 45%, Foam B에서 57% 증가하였습니다.</div>
+                    <div class="bullet">온도 의존성 실험 결과, 실온 대비 -30°C에서 붕괴 응력이 약 110% 증가하고, 60°C에서 약 50% 감소하여 강한 온도 의존성을 확인하였습니다.</div>
+                    <div class="bullet">압축에서 Foam A의 붕괴 응력이 Foam B보다 40% 이상 높게 나타났으며, 이는 미세한 셀 크기와 관련된 것으로 분석되었습니다.</div>
+                    <div class="bullet">인장과 압축에서의 <span class="term">영률</span> <span class="eng">(Young's modulus)</span>이 유사하게 나타나 초기 탄성 영역에서의 물리적 메커니즘이 동일함을 시사하였습니다.</div>
+                    <div class="bullet">압축에서는 <span class="term">국소화 밴드</span> <span class="eng">(localization bands)</span>가 형성되어 플래토 영역을 정의하는 반면, 인장에서는 상당한 횡방향 수축이 발생하였습니다.</div>
+                    <div class="bullet">전역 변형률과 DIC 변형률 측정 비교 결과, DIC 방법이 손상된 표면층을 제외하여 더 높은 초기 강성을 보였습니다.</div>
+                    <div class="bullet">온도 테스트에서 40°C와 60°C에서 접착 계면에서의 파괴가 발생하여 고온에서의 접착 방법 개선이 필요함을 확인하였습니다.</div>
+                    <div class="bullet">총 72개의 Foam A 테스트와 16개의 Foam B 테스트를 수행하여 통계적으로 신뢰할 수 있는 데이터를 확보하였습니다.</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Discussion: 결과의 해석</div>
+                <div class="section-content">
+                    <div class="bullet">두 폼 간의 <span class="term">붕괴 응력 차이</span> <span class="eng">(collapse stress difference)</span>는 Gibson-Ashby 모델을 사용하여 분석하였으며, 셀 크기의 차이가 주요 원인으로 제시되었습니다. 더 작은 셀 크기를 가진 Foam A가 더 높은 붕괴 응력을 보였습니다.</div>
+                    <div class="bullet"><span class="term">국부 변형률 필드</span> <span class="eng">(local strain field)</span> 분석을 통해 압축 변형 중 국소화 밴드 형성을 관찰하였으며, 이는 셀 형태학, 미세구조 또는 밀도의 미세한 차이에 의해 발생하는 것으로 분석되었습니다.</div>
+                    <div class="bullet">압축에서의 <span class="term">횡방향 팽창</span> <span class="eng">(transverse expansion)</span>이 거의 없는 것은 셀 벽의 좌굴과 내부 공극 부피의 수축으로 설명되며, 인장에서의 상당한 횡방향 수축은 셀 벽의 신장에 기인합니다.</div>
+                    <div class="bullet">변형률 속도 의존성은 벌크 PP의 항복 응력이 변형률 속도에 의존적이라는 사실과 일치하며, Gibson-Ashby 모델의 적용 가능성을 시사합니다.</div>
+                    <div class="bullet">온도 의존성은 PP 벌크 재료의 강성과 항복 특성 모두가 강한 온도 의존성을 보이는 것과 관련이 있으며, 유리 전이 온도의 영향을 받습니다.</div>
+                    <div class="bullet"><span class="term">차동 주사 열량측정법</span> <span class="eng">(Differential Scanning Calorimetry, DSC)</span> 분석 결과 두 폼의 결정도가 유사하여 벌크 재료 특성의 차이보다는 미세구조 차이가 더 중요한 요인임을 확인하였습니다.</div>
+                    <div class="bullet">압축과 인장에서의 Young's modulus 비교를 통해 초기 탄성 영역에서의 물리적 메커니즘이 <span class="term">셀 벽과 스트럿의 탄성 굽힘 및 신장</span> <span class="eng">(elastic bending and stretching)</span>임을 확인하였습니다.</div>
+                    <div class="bullet">크기 효과 분석에서 더 큰 시편이 약간 높은 붕괴 응력을 보였지만, 이는 밀도 차이에 의한 것으로 분석되었습니다.</div>
+                    <div class="bullet">등방성 거동 확인을 위해 구성 요소 표면에서 3mm 떨어진 위치에서 시편을 추출하여 표면 효과를 최소화하였습니다.</div>
+                    <div class="bullet">접착 방법의 한계로 인해 고온에서의 인장 테스트에서 접착 계면 파괴가 발생하여 향후 연구에서는 개선된 접착 방법 또는 시편 형상이 필요함을 확인하였습니다.</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Conclusion: 최종 요약</div>
+                <div class="section-content">
+                    <div class="bullet">실험 연구를 통해 조사된 폼의 응력-변형률 반응에 대한 <span class="term">변형률 속도와 온도의 강한 영향</span> <span class="eng">(strong effects of strain rate and temperature)</span>을 확인하였으며, 이는 충격 완화에서 에너지 흡수를 고려할 때 관련성이 높습니다.</div>
+                    <div class="bullet">유사한 밀도를 가진 두 폼 간의 기계적 반응 차이는 <span class="term">미세구조 조정</span> <span class="eng">(microstructure tuning)</span>을 통해 원하는 특성을 얻을 수 있음을 나타내며, 더 강한 폼이 준정적 하중 조건에서 40% 이상 높은 붕괴 응력을 보였습니다.</div>
+                    <div class="bullet">저속 및 중속 변형률에서의 상당한 변형률 속도 의존성이 확인되었으며, 10⁰ s⁻¹에서 준정적 변형률 10⁻³ s⁻¹ 대비 Foam A는 45%, Foam B는 57%의 붕괴 응력 증가를 보였습니다.</div>
+                    <div class="bullet">EPP 폼 구성 요소의 <span class="term">작동 온도</span> <span class="eng">(operating temperature)</span>는 제품 개발 과정에서 고려되어야 하며, 최저 온도(-30°C)에서 실온 대비 약 110% 증가, 최고 온도(60°C)에서 50% 감소를 보였습니다.</div>
+                    <div class="bullet">SEM 이미지에서 더 강한 폼이 <span class="term">더 미세한 셀룰러 구조</span> <span class="eng">(finer cellular structure)</span>와 더 작은 셀을 가지는 것으로 확인되어 미세구조와 성능 간의 관계를 입증하였습니다.</div>
+                    <div class="bullet">압축과 인장에서의 서로 다른 변형 메커니즘을 확인하였으며, 압축에서는 셀 벽 좌굴, 인장에서는 셀 벽 신장이 주요 변형 모드임을 밝혔습니다.</div>
+                    <div class="bullet"><span class="term">디지털 이미지 상관관계</span> <span class="eng">(Digital Image Correlation)</span> 기법을 통해 국부 변형률 필드 분석이 가능함을 입증하였으며, 전역 변형률과 비교하여 손상된 표면층의 영향을 배제한 더 정확한 재료 특성 측정이 가능하였습니다.</div>
+                    <div class="bullet">Gibson-Ashby 모델을 사용한 이론적 분석을 통해 <span class="term">셀 크기와 재료 분포</span> <span class="eng">(cell size and material distribution)</span>가 기계적 특성에 미치는 영향을 정량화하였으며, 향후 EPP 연구에서는 동일한 온도 및 환경 이력을 거친 벌크 재료에 대한 더 많은 정보가 필요함을 제시하였습니다.</div>
+                    <div class="bullet">연구 결과는 유한요소 시뮬레이션에서 사용되는 재료 모델의 매개변수 식별을 위한 기초로 활용될 수 있으며, 자동차 산업의 보행자 충격 보호 및 포장재 응용 분야에서 EPP 구성 요소의 설계 최적화에 기여할 것으로 기대됩니다.</div>
+                    <div class="bullet">본 연구는 폴리머 폼의 복잡한 기계적 거동에 대한 포괄적인 이해를 제공하며, 환경 조건과 미세구조가 에너지 흡수 능력에 미치는 중요한 영향을 정량적으로 입증하였습니다.</div>
